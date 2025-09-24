@@ -5,12 +5,3 @@ openpyxl
 gunicorn
 python-dotenv
 psycopg2-binary
-Procfile
-web: gunicorn app:app
-.gitignore
-__pycache__/
-*.pyc
-instance/
-.vscode/
-.env
-vipp_plans.db
