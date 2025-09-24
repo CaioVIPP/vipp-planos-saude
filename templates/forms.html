@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Adicionar Tutor{% endblock %}
+{% block content %}
+<h2>Adicionar Novo Tutor</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" required>
+    </div>
+    <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input type="text" class="form-control" id="telefone" name="telefone">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <button type="submit" class="btn btn-success">Salvar</button>
+</form>
+{% endblock %}

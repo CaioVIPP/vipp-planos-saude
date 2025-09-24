@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+*.log
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Configurações locais
+instance/
+*.db
+*.sqlite3
+
+# Credenciais locais
+.env

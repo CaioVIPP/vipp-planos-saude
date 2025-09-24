@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Detalhes do Tutor{% endblock %}
+{% block content %}
+<h2>Detalhes do Tutor</h2>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ tutor.nome }}</h5>
+        <p><strong>Telefone:</strong> {{ tutor.telefone }}</p>
+        <p><strong>Email:</strong> {{ tutor.email }}</p>
+        <h6>Pets:</h6>
+        <ul>
+            {% for pet in tutor.pets %}
+            <li>{{ pet.nome }} - Plano: {{ pet.plano }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<a href="/" class="btn btn-secondary mt-3">Voltar</a>
+{% endblock %}

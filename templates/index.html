@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Lista de Tutores{% endblock %}
+{% block content %}
+<h2 class="mb-4">Lista de Tutores</h2>
+<table class="table table-bordered table-striped">
+    <thead class="table-primary">
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tutor in tutores %}
+        <tr>
+            <td>{{ tutor.nome }}</td>
+            <td>{{ tutor.telefone }}</td>
+            <td>{{ tutor.email }}</td>
+            <td><a class="btn btn-sm btn-primary" href="/tutor/{{ tutor.id }}">Detalhes</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
