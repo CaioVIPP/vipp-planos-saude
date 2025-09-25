@@ -2,11 +2,25 @@
 
 from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import datetime
-from models import db, Tutor, Pet, Plan, Enrollment, Installment  # ajuste conforme seu projeto
-from utils import create_installments  # ajuste se a função estiver em outro arquivo
+from models import db, Tutor, Pet, Plan, Enrollment, Installment
+from utils import create_installments
 
+# -------------------------------
+# Configuração inicial
+# -------------------------------
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'sua_chave_secreta'  # troque por algo seguro
+
+# Banco de dados (local = SQLite | Render = PostgreSQL)
+# Para rodar localmente:
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vipp_plans.db'
+
+# Se for usar PostgreSQL no Render, comente a linha acima e use algo assim:
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://usuario:senha@host:porta/banco'
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db.init_app(app)
 
 
 # -------------------------------
@@ -106,10 +120,10 @@ def new_enrollment():
     db.session.add(enroll)
     db.session.commit()
 
-    # gera parcelas automaticamente
+    # Gera parcelas automaticamente
     create_installments(enroll)
 
-    flash('Adesão criada', 'success')
+    flash('Adesão criada com sucesso', 'success')
     return redirect(url_for('search', cpf=cpf))
 
 
@@ -152,7 +166,7 @@ def import_plans():
 
 
 # -------------------------------
-# Rota inicial (pode ajustar)
+# Rota inicial
 # -------------------------------
 @app.route('/')
 def index():
